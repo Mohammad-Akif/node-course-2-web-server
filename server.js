@@ -18,9 +18,9 @@ app.use((request, response, next) => {
     next();
 });
 
-app.use((request, response, next) => {
+/*app.use((request, response, next) => {
     response.render('maintainence');
-});
+});*/
 
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + '/views/partials');
@@ -63,6 +63,12 @@ app.get('/bad',(req, res) =>{
     res.send({
         errorMessage: 'Cannot fulfill the request'
     });
+});
+
+app.get('/projects',(req, res) =>{
+    res.render('projects.hbs',{
+        pageTitle: 'Projects'
+    })
 });
 
 app.listen(port,() =>{
